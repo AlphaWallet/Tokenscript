@@ -1,0 +1,46 @@
+ {
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "features": {
+  }
+}<ts:token>
+  <!-- Previous tags omitted -->
+  <ts:contract interface="erc721" name="ReallyCoolToken">
+    <ts:address network="$tst{CONTRACT_CHAIN}">$tst{NFT_CONTRACT_ADDRESS}</ts:address>
+    <ts:abi>
+
+    </ts:abi>
+  </ts:contract>
+  <ts:contract name="MySatelliteContract">
+    <ts:address network="$tst{CONTRACT_CHAIN}">$tst{NFT_CONTRACT_ADDRESS}</ts:address>
+    <ts:abi>
+      <![CDATA[
+      [
+        {
+          "constant": true,
+          "inputs": [
+            {
+              "name": "_owner",
+              "type": "address"
+            }
+          ],
+          "name": "balanceOf",
+          "outputs": [
+            {
+              "name": "balance",
+              "type": "uint256"
+            }
+          ],
+          "payable": false,
+          "stateMutability": "view",
+          "type": "function"
+        },
+        // Additional methods omitted
+      ]
+      ]]>
+    </ts:abi>
+  </ts:contract>
+  <ts:origins>
+    <!-- Define the contracts which hold the tokens that the user will use -->
+    <ts:ethereum contract="ReallyCoolToken"/>
+  </ts:origins>
+</ts:token>
